@@ -1,0 +1,60 @@
+server:
+  port : 9999
+#  servlet:
+#    contextPath: /osm
+
+spring:
+  #config:
+    #import : ezp-security.yml
+  mvc:
+    view:
+      prefix : /WEB-INF/jsp/
+      suffix : .jsp
+    
+mark:
+ web:
+  security: 
+    login-page: /login
+    login-ProcessingUrl: /login
+    login-SuccessUrl: /dashboard/
+  
+ datasource: 
+  platform: mysql
+  driver-class-name: com.mysql.jdbc.Driver
+  url: jdbc:mysql://database-dev.ct6aoimmgfit.ap-northeast-2.rds.amazonaws.com:3306/awsdb?useSSL=false&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useUnicode=true
+  username: admin
+  password: psy121128
+    
+    #jndi-name: jndi/oracle
+    #### ORACLE
+    #platform: oracle
+    #driver-class-name: oracle.jdbc.OracleDriver
+    #url: jdbc:oracle:thin:@xxx.xxx.xxx.xxx:1521:CDB1
+    #username: xxx
+    #password: xxx
+    #### TIBERO
+#    driver-class-name: com.tmax.tibero.jdbc.TbDriver
+#    url: jdbc:tibero:thin:@xxx.xxx.xxx.xxx:8629:tibero
+#    username: xxx
+#    password: xxxx
+    #### POSTGRESQL
+#    platform: postgresql
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:postgresql://xxx.xxx.xxx.xxx:xxxx/xxx?currentSchema=public
+#    username: xxx
+#    password: xxx
+    #### MYSQL
+#    platform: mysql
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://xxx.xxx.xxx.xxx:3306/xxx?useSSL=false&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useUnicode=true
+#    username: xxx
+#    password: xxx
+ allow-ip:
+  use-yn: false
+    # 여러개 등록시,로 구분
+  ips: 124.0.0.0,192.168.1.2,198.235.145.0
+ 
+mybatis:
+ mapper-locations: classpath:sqlmap/mysql/**/*.xml
+ configuration:
+  default-enum-type-handler: kr.root.tool.osm.support.mybatis.type.EnumTypeHandler

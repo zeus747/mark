@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration name="Morpheus" monitorInterval="60">
+
+	<!-- Appenders -->
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<!-- <PatternLayout pattern="%d{MM/dd HH:mm:ss}, %-5p (%C{3}) : %m%n" /> -->
+			<PatternLayout pattern="[%date] [%thread] [%level] [%c{0}:%L] : %msg %n" />
+		</Console>
+		
+		<RollingFile name="file" filePattern="c:/logs/mark1/%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<!--  pattern>%d{MM/dd HH:mm:ss}, %-5p (%C{3}) : %m%n</pattern>-->
+				<pattern>[%date] [%thread] [%level] [%c{0}:%L]: %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+		</RollingFile>
+	<!-- 	
+		 <RollingFile name="EVENTLOG" fileName="./logs/ums_admin_event.log" filePattern="./logs/ums_admin_event.log.%d{yyyy-MM-dd}" append="true">
+			<ThresholdFilter level="info" />
+			<PatternLayout>
+				 pattern>%d{MM/dd HH:mm:ss}, %-5p : %m%n</pattern>
+				<pattern>[%date] [%thread] [%level] [%c{0}:%L]: %m%n</pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
+			</Policies>
+		</RollingFile>  -->
+		
+	</Appenders>
+
+	<!-- Application Loggers -->
+	<Loggers>
+	    <Logger name="kr.dev.parksy" level="debug">
+	   	  <!--   <AppenderRef ref="console" />  -->
+			<AppenderRef ref="file" />
+	    </Logger>
+	     
+		<!-- <Logger name="kr.msp" level="debug" />
+		<Logger name="kr.uracle" level="debug" />
+		<Logger name="kr.uracle.ums.config" level="trace" />
+		<Logger name="kr.uracle.ums.module" level="trace" />
+		<Logger name="kr.uracle.ums.module.target.loader.MemberLoaderMapper.getAllMembers" level="info" />
+		<Logger name="kr.uracle.ums.module.target.loader.MemberLoaderMapper.getMembersByTarget" level="info" />
+		<Logger name="kr.uracle.ums.module.target.loader.MemberLoaderMapper.getMembersBySegment" level="info" />
+		<Logger name="kr.uracle.ums.module.target.loader.MemberLoaderMapper.addTargetMemberId" level="info" />
+		<Logger name="kr.uracle.ums.module.target.loader.MemberLoaderMapper.getAddressMembers" level="info" />
+		<Logger name="kr.uracle.ums.module.target.loader.MemberLoaderMapper.getFavoritesMembers" level="info" />
+		<Logger name="kr.uracle.ums.support.aop.RequestLoggingAspect" level="trace" />
+		<Logger name="org.mybatis.spring" level="debug" />
+		<Logger name="org.mybatis.spring.mapper" level="info" />
+		<Logger name="org.mybatis.spring.SqlSessionFactoryBean" level="info" /> -->
+		
+		<!--  <Root level="debug">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+		</Root>  -->
+	</Loggers>
+</Configuration>
+
